@@ -7,29 +7,56 @@
 # Play again
 
 
+
+# Declare constants for the game: p, r & s
 CHOICES = {'p' => 'Paper', 'r' => 'Rock', 's' => 'Scissors'}
 
+
+# Welcome message
 puts "Welcome to Paper, Rock, Scissors! Let's play."
+
+
+# Display message on game completion
+def display_message(winning_choice)
+	case winning_choice
+	when 'p'
+		puts "Paper wraps rock!"
+	when 'r'
+		puts "Rock smashes scissors!"
+	when 's'
+		puts "Scissors cuts paper!"
+	end
+end
 
 loop do 
 
+	# User chooses p, r or s
 	begin 
 		puts "Choose either paper(p), rock(r) or scissors(s)."
 		user_choice = gets.chomp.downcase
 	end until CHOICES.keys.include?(user_choice)
 	
 
+	# Computer chooses p, r or s
 	computer_choice = CHOICES.keys.sample
 
 
 	if user_choice == computer_choice
 		puts "It's a tie!"
 	elsif (user_choice == 'p' && computer_choice == 'r') || (user_choice == 'r' && computer_choice == 's') || (user_choice == 's' && computer_choice =='p')
+		display_message(user_choice)
 		puts "Congratulations! You won this round!"
 	else
-		"Oh no, you lost this round!"
+		display_message(computer_choice)
+		puts "Oh no, you lost this round!"
 	end
+
+	puts "Play again? (y/n)"
+	break if gets.chomp.downcase != 'y'
+
 end
+
+puts "Thanks for playing!"
 
 
 
