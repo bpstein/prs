@@ -1,10 +1,8 @@
 # Declare constants for the game: p, r & s
 CHOICES = {'p' => 'Paper', 'r' => 'Rock', 's' => 'Scissors'}
 
-
 # Welcome message
 puts "Welcome to Paper, Rock, Scissors! Let's play."
-
 
 # Display message on game completion
 def display_message(winning_choice)
@@ -18,17 +16,14 @@ def display_message(winning_choice)
 	end
 end
 
-
 # Gameplay loop until broken by user
 loop do 
-
 
 	# User chooses p, r or s
 	begin 
 		puts "Choose either paper(p), rock(r) or scissors(s)."
 		user_choice = gets.chomp.downcase
 		choice_check = false
-		
 
 		# Validate user choice as either p, r or s
 		while choice_check == false
@@ -46,10 +41,8 @@ loop do
 		end
 	end until CHOICES.keys.include?(user_choice)
 
-
 	# Computer chooses p, r or s
 	computer_choice = CHOICES.keys.sample
-
 
 	# Compare user choice to computer choice
 	if user_choice == computer_choice
@@ -61,19 +54,11 @@ loop do
 		display_message(computer_choice)
 		puts "Oh no, you lost this round!"
 	end
-
 	
 	# Ask user if they would like to play again
 	puts "Play again? (y/n)"
 	break if gets.chomp.downcase != 'y'
 end
 
-
 # End message
 puts "Thanks for playing!"
-
-
-
-
-
-
